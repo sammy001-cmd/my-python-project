@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body style="background-color: aqua; height: 100vh;color: black;">
+    <div class="container">
+      <h2 style="color: rgb(0, 0, 0); font-size: 50px;">Admin Dashboard</h2>
+
+
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %}
+
+
+      <div class="admin-dashboard">
+
+        <div style="display: flex;justify-content: center; gap: 200px;">
+          <div class="admin-section">
+            <h3 style="text-align: center; font-size: 30px;">Pending Loans</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Loan ID</th>
+                  <th>Member ID</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for loan in pending_loans %}
+                <tr>
+                  <td>{{ loan[0] }}</td>
+                  <td>{{ loan[1] }}</td>
+                  <td>{{ loan[2] }}</td>
+                  <td>{{ loan[3] }}</td>
+                  <td>
+                    <a
+                      href="{{ url_for('approve_loan', loan_id=loan[0], action='approve') }}"
+                      >Approve</a
+                    >
+                    <a
+                      href="{{ url_for('approve_loan', loan_id=loan[0], action='reject') }}"
+                      >Reject</a
+                    >
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Members List Section -->
+          <div class="admin-section">
+            <h3 style="text-align: center; font-size: 30px;">Members List</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Full Name</th>
+                  <th>Username</th>
+                  <th>Contributions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for member in members %}
+                <tr>
+                  <td>{{ member[0] }}</td>
+                  <td>{{ member[1] }}</td>
+                  <td>{{ member[2] }}</td>
+                  <td>{{ member[6] }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

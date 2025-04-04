@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1 style="text-align: center; box-shadow: 1px 2px black;">WELCOME TO OGBOMOSO ALAAFIA-TEDO COOPERATIVE SOCIETY</h1>
+    <div class="navigation">
+        <a href="{{ url_for('register') }}" class="btn">Register</a>
+        <a href="{{ url_for('login') }}" class="btn">Login</a>
+        <a href="{{ url_for('admin') }}" class="btn">Admin Panel</a>
+    </div>
+</body>
+</html>

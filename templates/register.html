@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Create an Account</h2>
+        <form method="POST" action="{{ url_for('register') }}">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <label for="gender">Gender</label>
+            <input type="text" id="gender" name="gender" required>
+            <label for="phone_no">Phone Number</label>
+            <input type="text" id="phone_no" name="phone_no" required>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

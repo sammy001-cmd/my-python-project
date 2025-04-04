@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apply for Loan</title>
+</head>
+<body>
+    <div style="text-align: center; background-color: rgb(221, 179, 179);">
+
+
+        <h2>Apply for a Loan</h2>
+
+        <form method="POST">
+            <label for="loan_amount">Loan Amount:</label>
+            <input type="number" name="loan_amount" required><br><br>
+            <button style="background-color: rgb(14, 229, 232); border-radius: 100px;">Submit Loan Application</button>
+        </form>
+    
+        <a href="{{ url_for('member_dashboard', member_id=member_id) }}" style=" color: black; text-decoration: solid, underline;  " >Back to Dashboard</a>
+
+    </div>
+
+</body>
+</html>

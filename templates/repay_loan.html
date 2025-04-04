@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repay Loan</title>
+</head>
+<body>
+    <h1>Repay Loan</h1>
+
+    <!-- Display flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <!-- <p style="color: {% 
+                    if category == 'success' %}green
+                    {% elif category == 'danger' %}red
+                    {% elif category == 'warning' %}orange
+                    {% else %}blue
+                    {% endif %};">
+                    {{ message }}
+                </p> -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Repayment Form -->
+    <form method="POST">
+        <label for="repayment_amount">Enter Repayment Amount:</label>
+        <input type="number" name="repayment_amount" id="repayment_amount" step="0.01" required>
+        <br><br>
+        <button type="submit">Repay Loan</button>
+    </form>
+
+    <br><br>
+    <a href="{{ url_for('member_dashboard', member_id=member_id) }}">Back to Dashboard</a>
+
+</body>
+</html>

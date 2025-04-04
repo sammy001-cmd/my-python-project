@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+</head>
+<body>
+    <h1>Feedback</h1>
+
+    <!-- Success message if feedback is submitted -->
+    {% if success_message %}
+        <p style="color: green;">{{ success_message }}</p>
+    {% endif %}
+
+    <!-- Feedback submission form -->
+    <form method="POST">
+        <label for="feedback">Your Feedback:</label>
+        <textarea name="feedback" id="feedback" rows="4" cols="50" required></textarea>
+        <br><br>
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    <!-- Display existing feedbacks -->
+    <h2>Previous Feedbacks</h2>
+    {% if feedbacks %}
+        {% for feedback in feedbacks %}
+            <p><strong>{{ feedback.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</strong>: {{ feedback.feedback }}</p>
+        {% endfor %}
+    {% else %}
+        <p>No feedback available yet.</p>
+    {% endif %}
+    
+</body>
+</html>

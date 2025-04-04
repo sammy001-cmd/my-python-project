@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Welcome, {{ member['fullname'] }}</h2>
+        <p>Your account has been created successfully. Here’s an overview of your profile:</p>
+        
+        <div class="member-details">
+            <p><strong>Member ID:</strong> {{ member['id'] }}</p>
+            <p><strong>Username:</strong> {{ member['username'] }}</p>
+            <p><strong>Contributions:</strong> {{ member['contributions'] }}</p>
+        </div>
+
+        <h3>Actions:</h3>
+        <ul style="list-style-type: none; display: flex; flex-direction: column; gap: 50px;">
+            <li>
+                <a href="{{ url_for('apply_loan', member_id=member['id']) }}"> <button>Apply for Loan</button></a>
+            </li>
+            <li>
+                <a href="{{ url_for('feedback', member_id=member['id']) }}"><button>Provide Feedback </button></a>
+            </li>
+            <li>
+                <a href="{{ url_for('save_money', member_id=member['id']) }}"><button>Save Money</button></a>
+            </li>
+            <li>
+                <a href="{{ url_for('repay_loan', member_id=member['id']) }}"><button>Repay Loan</button></a>
+            </li>
+        </ul>
+
+        <br>
+        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+    </div>
+</body>
+</html>
